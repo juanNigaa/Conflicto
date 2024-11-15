@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Dígitos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contador de Dígitos</h1>
+
+    <label for="numero">Ingrese un número:</label>
+    <input type="number" id="numero">
+
+    <button onclick="contarYMostrarDigitos()">Contar Dígitos</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function contarDigitos(numero) {
+            // Tomar el valor absoluto del número para manejar números negativos
+            // Esto asegura que el logaritmo sea válido, ya que logaritmo de números negativos no tiene sentido
+            // Math.abs() devuelve el valor absoluto del número
+            numero = Math.abs(numero);
+
+            // Utilizar la función logaritmo base 10 para obtener la cantidad de dígitos
+            // Math.log10(numero) devuelve el logaritmo base 10 del número
+            // Math.floor() redondea hacia abajo para obtener el número entero más cercano
+            // Sumar 1 porque el logaritmo cuenta la cantidad de cifras menos 1
+			
+			/* La función Math.log10() en JavaScript devuelve el logaritmo en base 10 de un número. 
+			El logaritmo en base 10 de un número es el exponente al cual se debe elevar 10 para obtener ese número.
+			Esto significa "¿a qué exponente de 10 debemos elevar para obtener 100?". La respuesta es 2.
+			
+			Esto significa "¿a qué exponente de 10 debemos elevar para obtener 555?". La respuesta es aproximadamente 2.744
+			si redondeamos se queda en 2.
+			*/
+			
+			
+            let cantidadDigitos = Math.floor(Math.log10(numero)) + 1;
+            return cantidadDigitos;
+        }
+
+        function contarYMostrarDigitos() {
+            // Obtener el número ingresado por el usuario
+            let numeroIngresado = document.getElementById('numero').value;
+
+            // Verificar si se ingresó un número válido
+            if (numeroIngresado === "" || isNaN(numeroIngresado)) {
+                alert("Por favor, ingrese un número válido.");
+                return;
+            }
+
+            // Convertir a número
+            let numero = parseInt(numeroIngresado);
+
+            // Calcular la cantidad de dígitos
+            let cantidadDigitos = contarDigitos(numero);
+
+            // Mostrar el resultado en la página
+            document.getElementById('resultado').textContent = "El número " + numero + " tiene " + cantidadDigitos + " dígitos.";
+        }
+    </script>
+</body>
+</html>

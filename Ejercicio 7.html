@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formateador de Fecha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formateador de Fecha</h1>
+
+    <label for="fecha">Selecciona una fecha:</label>
+    <input type="date" id="fecha">
+
+    <button onclick="formatearFecha()">Formatear Fecha</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function formatearFecha() {
+            // Obtener la fecha ingresada
+            let fechaSeleccionada = new Date(document.getElementById('fecha').value);
+
+            // Llamar a la función para formatear la fecha
+            let fechaFormateada = obtenerFechaFormateada(fechaSeleccionada);
+
+            // Mostrar el resultado
+            document.getElementById('resultado').textContent = fechaFormateada;
+        }
+
+        function obtenerFechaFormateada(fecha) {
+            // Array con los nombres de los meses
+            const meses = [
+                "Enero", "Febrero", "Marzo", "Abril",
+                "Mayo", "Junio", "Julio", "Agosto",
+                "Septiembre", "Octubre", "Noviembre", "Diciembre"
+            ];
+
+            // Obtener día, mes y año de la fecha
+            let dia = fecha.getDate();
+            let mes = meses[fecha.getMonth()];
+            let anio = fecha.getFullYear();
+
+            // Formatear la salida
+            return dia + " de " + mes + " y " + anio;
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Día de la Semana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Día de la Semana</h1>
+
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha">
+
+    <button onclick="calcularDiaDeLaSemana()">Calcular Día de la Semana</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calcularDiaDeLaSemana() {
+            // Obtener la fecha ingresada
+            let fechaIngresada = new Date(document.getElementById('fecha').value);
+
+            // Calcular la fecha dentro de 30 días
+            let fechaFutura = new Date(fechaIngresada);
+            fechaFutura.setDate(fechaFutura.getDate() + 30);
+
+            // Obtener el día de la semana
+            let diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+            let diaSemanaFuturo = diasSemana[fechaFutura.getDay()];
+
+            // Mostrar el resultado
+            mostrarResultado(diaSemanaFuturo);
+        }
+
+        function mostrarResultado(diaSemanaFuturo) {
+            // Obtener el elemento de resultado
+            let resultadoElemento = document.getElementById('resultado');
+
+            // Mostrar el resultado
+            resultadoElemento.textContent = resultadoElemento.textContent = "Dentro de 30 días, será un " + diaSemanaFuturo + ".";
+        }
+    </script>
+</body>
+</html>

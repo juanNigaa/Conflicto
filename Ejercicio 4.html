@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Edad</title>
+</head>
+<body>
+
+  <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+  <input type="date" id="fechaNacimiento">
+  <button onclick="calcularEdad()">Calcular Edad</button>
+  <p id="resultado"></p>
+
+  <script>
+    function calcularEdad() {
+      const fechaNacimiento = document.getElementById("fechaNacimiento").value;
+      const fechaNac = new Date(fechaNacimiento);
+      const fechaActual = new Date();
+
+      const anios = fechaActual.getFullYear() - fechaNac.getFullYear();
+      const meses = fechaActual.getMonth() - fechaNac.getMonth();
+      const dias = fechaActual.getDate() - fechaNac.getDate();
+
+      document.getElementById("resultado").innerText =  "Edad actual: " + anios + " años.";
+      
+    }
+  </script>
+
+</body>
+</html>
